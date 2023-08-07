@@ -36,6 +36,12 @@ function fnArticleEditCheck() {
 		return;
 	}
 
+	tmp = form.keyBox.value;
+	if (tmp.length > 100) {
+		alert('キーBox番号は100文字以内で入力してください');
+		return;
+	}
+
 	if (confirm('この内容で登録します。よろしいですか？')) {
 		form.act.value = 'articleEditComplete';
 		form.submit();
