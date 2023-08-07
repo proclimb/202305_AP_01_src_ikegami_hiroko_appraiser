@@ -18,6 +18,12 @@ function fnArticleEditCheck() {
 		return;
 	}
 
+	tmp = form.keyPlace.value;
+	if (tmp.length > 200) {
+		alert('鍵場所は200文字以内で入力してください');
+		return;
+	}
+
 	if (confirm('この内容で登録します。よろしいですか？')) {
 		form.act.value = 'articleEditComplete';
 		form.submit();
