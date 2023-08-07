@@ -11,6 +11,13 @@ function fnArticleEditCheck() {
 		alert('物件名は100文字以内で入力してください');
 		return;
 	}
+
+	tmp = form.room.value;
+	if (tmp.length > 100) {
+		alert('部屋番号は100文字以内で入力してください');
+		return;
+	}
+
 	if (confirm('この内容で登録します。よろしいですか？')) {
 		form.act.value = 'articleEditComplete';
 		form.submit();
