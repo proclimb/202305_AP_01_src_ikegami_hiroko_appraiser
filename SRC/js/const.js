@@ -8,74 +8,93 @@ function fnConstEditCheck() {
 		return;
 	}
 
-	tmp = form.years.value;
-	if (tmp.length > 100) {
-		alert('築年は100文字以内で入力してください');
+	if (isLength(100, "築年", form.years)) {
 		return;
 	}
-
-	tmp = form.sellPrice.value;
-	if (tmp.length > 9 || tmp.match(/[^0-9]+/)) {
-		alert('販売予定額は9桁以内の半角数字で入力してください');
+	if (isNumericLength(9, "販売予定額", form.sellPrice)) {
 		return;
 	}
-
-	tmp = form.interiorPrice.value;
-	if (tmp.length > 9 || tmp.match(/[^0-9]+/)) {
-		alert('内装見越額は9桁以内の半角数字で入力してください');
+	if (isNumericLength(9, "内装見越額", form.interiorPrice)) {
 		return;
 	}
-
-	tmp = form.constTrader.value;
-	if (tmp.length > 100) {
-		alert('施工業者は100文字以内で入力してください');
+	if (isLength(100, "施工業者", form.constTrader)) {
 		return;
 	}
-
-	tmp = form.constPrice.value;
-	if (tmp.length > 9 || tmp.match(/[^0-9]+/)) {
-		alert('工事金額は9桁以内の半角数字で入力してください');
+	if (isNumericLength(9, "工事金額", form.constPrice)) {
 		return;
 	}
-
-	tmp = form.constAdd.value;
-	if (tmp.length > 100) {
-		alert('追加工事は100文字以内で入力してください');
+	if (isLength(100, "追加工事", form.constAdd)) {
 		return;
 	}
-
-	tmp = form.constNote.value;
-	if (tmp.length > 100) {
-		alert('備考は200文字以内で入力してください');
+	if (isLength(200, "備考", form.constNote)) {
 		return;
 	}
-
 	if (!fnYMDCheck("正しい買取決済日付", form.purchaseDT)) {
 		return;
 	}
-	if (!fnYMDCheck("正しい工期開始日付", form.workStartDT))
-		if (!fnYMDCheck("正しい工期終了日付", form.workEndDT))
-			if (!fnYMDCheck("正しい電気水道開栓日付", form.lineOpenDT))
-				if (!fnYMDCheck("正しい電気水道閉栓日付", form.lineCloseDT))
-					if (!fnYMDCheck("正しい電気水道開栓連絡日", form.lineOpenContactDT))
-						if (!fnYMDCheck("正しい電気水道閉栓連絡日", form.lineCloseContactDT))
-							if (isLength(200, "備考", form.lineContactNote))
-								if (isLength(100, "電気連絡者", form.electricityCharge))
-									if (isLength(100, "ガス連絡者", form.gasCharge))
-										if (isLength(100, "荷＆鍵引取", form.receive))
-											if (isLength(100, "給湯", form.hotWater))
-												if (fnYMDCheck("正しい現調日付", form.siteDate))
-													if (isLength(100, "届出用紙", form.leavingForm))
-														if (fnYMDCheck("正しい届出期日", form.leavingDT))
-															if (isLength(100, "管理会社", form.manageCompany))
-																if (isLength(100, "管理室", form.floorPlan))
-																	if (isLength(100, "前所有者", form.formerOwner))
-																		if (isLength(100, "仲介会社（担当）", form.brokerCharge))
-																			if (isLength(100, "仲介会社（連絡先）", form.brokerContact))
-																				if (isLength(100, "内装担当者", form.interiorCharge))
+	if (!fnYMDCheck("正しい工期開始日付", form.workStartDT)) {
+		return;
+	}
+	if (!fnYMDCheck("正しい工期終了日付", form.workEndDT)) {
+		return;
+	}
+	if (!fnYMDCheck("正しい電気水道開栓日付", form.lineOpenDT)) {
+		return;
+	}
+	if (!fnYMDCheck("正しい電気水道閉栓日付", form.lineCloseDT)) {
+		return;
+	}
+	if (!fnYMDCheck("正しい電気水道開栓連絡日", form.lineOpenContactDT)) {
+		return;
+	}
+	if (!fnYMDCheck("正しい電気水道閉栓連絡日", form.lineCloseContactDT)) {
+		return;
+	}
+	if (isLength(200, "備考", form.lineContactNote)) {
+		return;
+	}
+	if (isLength(100, "電気連絡者", form.electricityCharge)) {
+		return;
+	}
+	if (isLength(100, "ガス連絡者", form.gasCharge)) {
+		return;
+	}
+	if (isLength(100, "荷＆鍵引取", form.receive)) {
+		return;
+	}
+	if (isLength(100, "給湯", form.hotWater)) {
+		return;
+	}
+	if (!fnYMDCheck("正しい現調日付", form.siteDate)) {
+		return;
+	}
+	if (isLength(100, "届出用紙", form.leavingForm)) {
+		return;
+	}
+	if (!fnYMDCheck("正しい届出期日", form.leavingDT)) {
+		return;
+	}
+	if (isLength(100, "管理会社", form.manageCompany)) {
+		return;
+	}
+	if (isLength(100, "管理室", form.floorPlan)) {
+		return;
+	}
+	if (isLength(100, "前所有者", form.formerOwner)) {
+		return;
+	}
+	if (isLength(100, "仲介会社（担当）", form.brokerCharge)) {
+		return;
+	}
+	if (isLength(100, "仲介会社（連絡先）", form.brokerContact)) {
+		return;
+	}
+	if (isLength(100, "内装担当者", form.interiorCharge)) {
+		return;
+	}
 
-																					if (confirm('この内容で登録します。よろしいですか？')) {
-																						form.act.value = 'constEditComplete';
-																						form.submit();
-																					}
+	if (confirm('この内容で登録します。よろしいですか？')) {
+		form.act.value = 'constEditComplete';
+		form.submit();
+	}
 }
